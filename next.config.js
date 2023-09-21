@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = { experimental: { serverActions: true } };
+const nextConfig = {
+	experimental: {
+		typedRoutes: true,
+		serverActions: true,
+		// optimizePackageImports: ['date-fns'],
+	},
+};
 
 module.exports = nextConfig;
