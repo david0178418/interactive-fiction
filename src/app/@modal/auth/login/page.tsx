@@ -1,9 +1,9 @@
 import { redirect } from 'next/navigation';
+import LoginForm from './login-form';
 import { getServerSession } from '@/server/auth-options';
-import RegisterForm from './register-form';
 
 export default
-async function RegisterPage() {
+async function LoginPage() {
 	const session = await getServerSession();
 
 	if(session) {
@@ -12,7 +12,7 @@ async function RegisterPage() {
 
 	return (
 		<div>
-			<RegisterForm/>
+			<LoginForm/>
 		</div>
 	);
 }
