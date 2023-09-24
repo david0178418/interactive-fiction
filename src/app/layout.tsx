@@ -2,6 +2,10 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';
+import LoginModal from '@/components/modals/login';
+import RegisterModal from '@/components/modals/register';
+import { getServerSession } from '@/server/auth-options';
+import LogoutButton from '@/components/logout-button';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,21 +16,39 @@ export const metadata: Metadata = {
 
 interface Props {
 	children: ReactNode;
-	modal: ReactNode;
 }
 
-export default function RootLayout(props: Props) {
-	const {
-		children,
-		modal,
-	} = props;
+export default
+async function RootLayout(props: Props) {
+	const { children } = props;
+	const session = await getServerSession();
 
-	return (
-		<html lang="en">
-			<body className={inter.className}>
+	return (<html lang="en">
+		<body className={inter.className}>
+			<header className="bg-gray-800 py-4">
+				<nav className="container mx-auto flex justify-between items-center">
+					<h1 className="text-white font-bold text-xl">Choose Your Own Adventure</h1>
+					<div>
+						{session && (
+							<LogoutButton />
+						)}
+						{!session && (
+							<>
+								<span className="mr-2">
+									<LoginModal />
+								</span>
+								<span>
+									<RegisterModal />
+								</span>
+							</>
+						)}
+					</div>
+				</nav>
+			</header>
+			<main className="flex-1">
 				{children}
-				{modal}
-			</body>
-		</html>
+			</main>
+		</body>
+	</html>
 	);
 }
