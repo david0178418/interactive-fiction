@@ -20,15 +20,25 @@ function RegisterForm() {
 			<div>
 				<div className="grid w-full items-center gap-1.5 mb-5">
 					<Label>Email</Label>
-					<Input value={email} onChange={e => setEmail(e.target.value)} />
+					<Input
+						value={email}
+						onChange={e => setEmail(e.target.value)}
+					/>
 				</div>
 				<div className="grid w-full items-center gap-1.5 mb-5">
 					<Label>Username</Label>
-					<Input value={username} onChange={e => setUsername(e.target.value)} />
+					<Input
+						value={username}
+						onChange={e => setUsername(e.target.value)}
+					/>
 				</div>
 				<div className="grid w-full items-center gap-1.5 mb-5">
 					<Label>Password</Label>
-					<Input value={password} onChange={e => setPassword(e.target.value)} />
+					<Input
+						type="password"
+						value={password}
+						onChange={e => setPassword(e.target.value)}
+					/>
 				</div>
 			</div>
 			<DialogFooter>

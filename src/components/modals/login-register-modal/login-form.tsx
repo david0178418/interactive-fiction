@@ -27,7 +27,7 @@ function LoginForm() {
 
 				<div className="grid w-full items-center gap-1.5 mb-5">
 					<Label>Password</Label>
-					<Input value={password} onChange={e => setPassword(e.target.value)} />
+					<Input type="password" value={password} onChange={e => setPassword(e.target.value)} />
 				</div>
 			</div>
 

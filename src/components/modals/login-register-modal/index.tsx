@@ -1,6 +1,9 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { TabsList } from '@radix-ui/react-tabs';
+import RegisterForm from './register-form';
+import LoginForm from './login-form';
+import { LogOutIcon } from 'lucide-react';
 import {
 	Dialog,
 	DialogContent,
@@ -13,16 +16,13 @@ import {
 	TabsContent,
 	TabsTrigger,
 } from '@/components/ui/tabs';
-import RegisterForm from './register-form';
-import LoginForm from './login-form';
-import { LogOutIcon } from 'lucide-react';
 
 export default
 function LoginRegisterModal() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button color="primary" className="font-bold">
+				<Button color="primary" className="font-bold w-full">
 					Login/Register <LogOutIcon className="h-5 w-5 ml-1" />
 				</Button>
 			</DialogTrigger>
