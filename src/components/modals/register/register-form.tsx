@@ -1,6 +1,10 @@
 'use client';
 
 import { AuthProviders } from '@/common/constants';
+import { Button } from '@/components/ui/button';
+import { DialogFooter } from '@/components/ui/dialog';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import register from '@/server/actions/register';
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
@@ -12,31 +16,39 @@ function RegisterForm() {
 	const [password, setPassword] = useState('');
 
 	return (
-		<div>
-			<label>Email</label>
-			<input value={email} onChange={e => setEmail(e.target.value)} />
-
-			<label>Username</label>
-			<input value={username} onChange={e => setUsername(e.target.value)} />
-
-			<label>Password</label>
-			<input value={password} onChange={e => setPassword(e.target.value)} />
-			<button onClick={async () => {
-				const x = await register({
-					email,
-					password,
-					username,
-				});
-
-				if(x?.ok) {
-					await signIn(AuthProviders.Creds, {
-						username: email,
+		<>
+			<div>
+				<div className="grid w-full items-center gap-1.5 mb-5">
+					<Label>Email</Label>
+					<Input value={email} onChange={e => setEmail(e.target.value)} />
+				</div>
+				<div className="grid w-full items-center gap-1.5 mb-5">
+					<Label>Username</Label>
+					<Input value={username} onChange={e => setUsername(e.target.value)} />
+				</div>
+				<div className="grid w-full items-center gap-1.5 mb-5">
+					<Label>Password</Label>
+					<Input value={password} onChange={e => setPassword(e.target.value)} />
+				</div>
+			</div>
+			<DialogFooter>
+				<Button onClick={async () => {
+					const response = await register({
+						email,
 						password,
+						username,
 					});
-				}
-			}}>
-				Register
-			</button>
-		</div>
+
+					if(response?.ok) {
+						await signIn(AuthProviders.Creds, {
+							username: email,
+							password,
+						});
+					}
+				}}>
+					Register
+				</Button>
+			</DialogFooter>
+		</>
 	);
 }

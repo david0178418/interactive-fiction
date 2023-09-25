@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/dialog';
 
 export default
-async function LoginModal() {
+function LoginModal() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
