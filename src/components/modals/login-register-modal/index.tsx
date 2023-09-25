@@ -15,14 +15,15 @@ import {
 } from '@/components/ui/tabs';
 import RegisterForm from './register-form';
 import LoginForm from './login-form';
+import { LogOutIcon } from 'lucide-react';
 
 export default
 function LoginRegisterModal() {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button color="primary">
-					Login/Register
+				<Button color="primary" className="font-bold">
+					Login/Register <LogOutIcon className="h-5 w-5 ml-1" />
 				</Button>
 			</DialogTrigger>
 			<DialogContent>
