@@ -21,7 +21,7 @@ function LoginForm() {
 					<Input value={usernameOrEmail} onChange={e => setUsernameOrEmail(e.target.value)} />
 				</div>
 
-				<div className="grid w-full items-center gap-1.5">
+				<div className="grid w-full items-center gap-1.5 mb-5">
 					<Label>Password</Label>
 					<Input value={password} onChange={e => setPassword(e.target.value)} />
 				</div>

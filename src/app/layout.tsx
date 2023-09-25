@@ -2,10 +2,9 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { ReactNode } from 'react';
-import LoginModal from '@/components/modals/login';
-import RegisterModal from '@/components/modals/register';
 import { getServerSession } from '@/server/auth-options';
 import LogoutButton from '@/components/logout-button';
+import LoginRegisterModal from '@/components/modals/login-register-modal';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -33,14 +32,7 @@ async function RootLayout(props: Props) {
 							<LogoutButton />
 						)}
 						{!session && (
-							<>
-								<span className="mr-2">
-									<LoginModal />
-								</span>
-								<span>
-									<RegisterModal />
-								</span>
-							</>
+							<LoginRegisterModal/>
 						)}
 					</div>
 				</nav>
