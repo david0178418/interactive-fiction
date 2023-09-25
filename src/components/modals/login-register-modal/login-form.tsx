@@ -5,13 +5,17 @@ import { Button } from '@/components/ui/button';
 import { DialogFooter } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useToast } from '@/components/ui/use-toast';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default
 function LoginForm() {
 	const [usernameOrEmail, setUsernameOrEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const { refresh } = useRouter();
+	const { toast } = useToast();
 
 	return (
 		<>
@@ -29,10 +33,17 @@ function LoginForm() {
 
 			<DialogFooter>
 				<Button onClick={async () => {
-					return signIn(AuthProviders.Creds, {
+					const loginResponse = await signIn(AuthProviders.Creds, {
 						username: usernameOrEmail,
 						password,
+						redirect: false,
 					});
+
+					if(loginResponse?.error) {
+						toast({ title: 'Login failed' });
+					} else {
+						refresh();
+					}
 				}}>
 					Login
 				</Button>

@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 import { getServerSession } from '@/server/auth-options';
 import LogoutButton from '@/components/logout-button';
 import LoginRegisterModal from '@/components/modals/login-register-modal';
+import { Toaster } from '@/components/ui/toaster';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -40,6 +41,7 @@ async function RootLayout(props: Props) {
 			<main className="flex-1">
 				{children}
 			</main>
+			<Toaster />
 		</body>
 	</html>
 	);
