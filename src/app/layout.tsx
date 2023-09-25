@@ -45,7 +45,7 @@ async function RootLayout(props: Props) {
 								New <CalendarDays className="inline-block"/>
 							</div>
 						</Link>
-						<Link href="/">
+						<Link href="/create">
 							<div className="font-bold text-lg text-white p-2 inline-block">
 								Write <PenSquare className="inline-block"/>
 							</div>
