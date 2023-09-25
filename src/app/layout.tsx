@@ -6,6 +6,10 @@ import { getServerSession } from '@/server/auth-options';
 import LogoutButton from '@/components/logout-button';
 import LoginRegisterModal from '@/components/modals/login-register-modal';
 import { Toaster } from '@/components/ui/toaster';
+import Link from 'next/link';
+import {
+	CalendarDays, FlameIcon, PenSquare,
+} from 'lucide-react';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,18 +31,37 @@ async function RootLayout(props: Props) {
 		<body className={inter.className}>
 			<header className="bg-gray-800 py-4">
 				<nav className="container mx-auto flex justify-between items-center">
-					<h1 className="text-white font-bold text-xl">Choose Your Own Adventure</h1>
+					<h1 className="text-white font-bold text-xl">
+						CYOA
+					</h1>
+					<div>
+						<Link href="/" className="border-white border-r-2">
+							<div className="font-bold text-lg text-white p-2 inline-block">
+								Hot<FlameIcon className="inline-block"/>
+							</div>
+						</Link>
+						<Link href="/" className="border-white border-r-2">
+							<div className="font-bold text-lg text-white p-2 inline-block">
+								New <CalendarDays className="inline-block"/>
+							</div>
+						</Link>
+						<Link href="/">
+							<div className="font-bold text-lg text-white p-2 inline-block">
+								Write <PenSquare className="inline-block"/>
+							</div>
+						</Link>
+					</div>
 					<div>
 						{session && (
 							<LogoutButton />
 						)}
 						{!session && (
-							<LoginRegisterModal/>
+							<LoginRegisterModal />
 						)}
 					</div>
 				</nav>
 			</header>
-			<main className="flex-1">
+			<main className="container">
 				{children}
 			</main>
 			<Toaster />
