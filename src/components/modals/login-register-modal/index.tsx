@@ -23,7 +23,7 @@ function LoginRegisterModal() {
 		<Dialog>
 			<DialogTrigger asChild>
 				<Button color="primary" className="font-bold w-full">
-					Login/Register <LogOutIcon className="h-5 w-5 ml-1" />
+					<LogOutIcon className="h-5 w-5 mr-1" /> Login/Register
 				</Button>
 			</DialogTrigger>
 			<DialogContent>

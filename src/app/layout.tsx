@@ -37,13 +37,13 @@ async function RootLayout(props: Props) {
 				<h1 className="text-2xl mb-5">CYOA</h1>
 				<ul className="space-y-2">
 					<li>
-						<Link className="flex items-center gap-3 py-2" href="#">
+						<Link className="flex items-center gap-3 py-2" href="/">
 							<FlameIcon className="h-5 w-5"/>
 							<span>Hot</span>
 						</Link>
 					</li>
 					<li>
-						<Link className="flex items-center gap-3 py-2" href="#">
+						<Link className="flex items-center gap-3 py-2" href="/">
 							<CalendarDaysIcon className="h-5 w-5"/>
 							<span>New</span>
 						</Link>
