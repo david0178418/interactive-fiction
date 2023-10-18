@@ -2,56 +2,55 @@ import { ObjectId } from 'mongodb';
 import { nowISOString } from '../utils';
 
 export
-interface DbStory {
+interface DbStorySection {
 	_id: ObjectId;
+	storyId: ObjectId;
 	createdDate: Date;
-	summary: string;
 	title: string;
+	content: string;
 	updatedDate: Date;
-	owner: {
-		id: ObjectId;
-		username: string;
-	};
-}
-export
-interface UiStory {
-	_id: string;
-	createdDateISOString: string;
-	summary: string;
-	title: string;
-	updatedDateISOString: string;
-	owner: {
-		id: string;
-		username: string;
-	}
+	nextOptions: Array<{
+		storySectionId: ObjectId;
+		text: string;
+	}>;
 }
 
 export
-function createDbStory(): DbStory {
+interface UiStorySection {
+	_id: string;
+	storyId: string;
+	createdDateISOString: string;
+	title: string;
+	content: string;
+	updatedDateISOString: string;
+	nextOptions: Array<{
+		storySectionId: string;
+		text: string;
+	}>;
+}
+
+export
+function createDbStorySection(): DbStorySection {
 	return {
 		_id: new ObjectId(),
+		storyId: new ObjectId(),
 		createdDate: new Date(),
 		updatedDate: new Date(),
 		title: '',
-		summary: '',
-		owner: {
-			id: new ObjectId(),
-			username: '',
-		},
+		content: '',
+		nextOptions: [],
 	};
 }
 
 export
-function createUiStory(): UiStory {
+function createUiStorySection(): UiStorySection {
 	return {
 		_id: '',
+		storyId: '',
 		createdDateISOString: nowISOString(),
 		updatedDateISOString: nowISOString(),
 		title: '',
-		summary: '',
-		owner: {
-			id: '',
-			username: '',
-		},
+		content: '',
+		nextOptions: [],
 	};
 }
