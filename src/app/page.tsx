@@ -1,18 +1,22 @@
-import { getServerSession } from '@/server/auth-options';
+import { range } from '@/common/utils';
+import { StoryCard } from '@/components/story-card';
 
 export default
 async function HomePage() {
-	const session = await getServerSession();
 	return (
-		<div>
-			<p>
-				Landing
-			</p>
-			{session && (
-				<>
-					Logged in as {session.user.username}
-				</>
-			)}
+		<div className="grid xs:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+			{range(10).map(i => (
+				<StoryCard
+					key={i}
+					story={{
+						_id: '',
+						title: 'foo',
+						summary: 'asdfas df asdf ads f adsf as sdf',
+						ownerId: '',
+						ownerUsername: 'bar',
+					}}
+				/>
+			))}
 		</div>
 	);
 }
