@@ -3,7 +3,7 @@ const nextConfig = {
 	experimental: {
 		typedRoutes: true,
 		serverActions: true,
-		// optimizePackageImports: ['date-fns'],
+		optimizePackageImports: ['date-fns'],
 	},
 };
 
