@@ -12,18 +12,18 @@ interface DbStory {
 		username: string;
 	}
 }
-
 export
-type UiStory = Foo<DbStory, {
+interface UiStory {
 	_id: string;
 	createdDateISOString: string;
 	summary: string;
 	title: string;
+	updatedDateISOString: string;
 	owner: {
 		id: string;
 		username: string;
-	};
-}>;
+	}
+}
 
 export
 function createDbStory(): DbStory {
@@ -44,8 +44,8 @@ export
 function createUiStory(): UiStory {
 	return {
 		_id: '',
-		createdDate: new Date().toISOString(),
-		updatedDate: new Date().toISOString(),
+		createdDateISOString: new Date().toISOString(),
+		updatedDateISOString: new Date().toISOString(),
 		title: '',
 		summary: '',
 		owner: {

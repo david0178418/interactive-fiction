@@ -31,6 +31,12 @@ const BaseReq: RequestInit = {
 } as const;
 
 export
+const Paths = {
+	Home: '/',
+	StoryEdit: '/edit',
+} as const;
+
+export
 const DbCollections = {
 	Users: 'users',
 	UsersMeta: 'users-meta',

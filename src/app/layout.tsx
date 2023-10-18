@@ -14,6 +14,7 @@ import Link from 'next/link';
 import {
 	CalendarDaysIcon, FlameIcon, PenSquareIcon,
 } from 'lucide-react';
+import { Paths } from '@/common/constants';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -37,19 +38,19 @@ async function RootLayout(props: Props) {
 				<h1 className="text-2xl mb-5">CYOA</h1>
 				<ul className="space-y-2">
 					<li>
-						<Link className="flex items-center gap-3 py-2" href="/">
+						<Link className="flex items-center gap-3 py-2" href={Paths.Home}>
 							<FlameIcon className="h-5 w-5"/>
 							<span>Hot</span>
 						</Link>
 					</li>
 					<li>
-						<Link className="flex items-center gap-3 py-2" href="/">
+						<Link className="flex items-center gap-3 py-2" href={Paths.Home}>
 							<CalendarDaysIcon className="h-5 w-5"/>
 							<span>New</span>
 						</Link>
 					</li>
 					<li>
-						<Link className="flex items-center gap-3 py-2" href="/create">
+						<Link className="flex items-center gap-3 py-2" href={Paths.StoryEdit}>
 							<PenSquareIcon className="h-5 w-5"/>
 							<span>Write</span>
 						</Link>
