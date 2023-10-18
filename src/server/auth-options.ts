@@ -2,20 +2,19 @@ import { compare } from 'bcryptjs';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { AuthProviders, UserRoles } from '@/common/constants';
 import { cookies, headers } from 'next/headers';
+import { NextAuthOptions, getServerSession as originalGetServerSession } from 'next-auth';
+import { cache } from 'react';
 import {
 	fetchUser,
 	getUserFromKey,
 	updateLastLogin,
 } from '@/server/queries';
-import {
-	NextAuthOptions,
-	getServerSession as originalGetServerSession,
-} from 'next-auth';
 
 const { NEXTAUTH_SECRET } = process.env;
 
 export
-async function getServerSession() {
+const getServerSession = cache(async () => {
+	console.log('called server session');
 	// Original code just wraps passing auth
 	// return originalGetServerSession(authOptions);
 
@@ -38,7 +37,7 @@ async function getServerSession() {
 
 	// @ts-ignore - The type used in next-auth for the req object doesn't match, but it still works
 	return originalGetServerSession(req, res, authOptions);
-}
+});
 
 export
 const authOptions: NextAuthOptions = {
@@ -227,9 +226,9 @@ const authOptions: NextAuthOptions = {
 				token,
 			} = args;
 
-			updateLastLogin(session.user.id);
-
 			session.user = token.user;
+
+			updateLastLogin(session.user.id);
 
 			return session;
 		},
