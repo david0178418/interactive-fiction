@@ -7,13 +7,13 @@ import { DbUserMeta } from '@/common/types/UserMeta';
 import { Enum } from '@/common/types';
 import { DbUserOneClickLinkKey } from '@/common/types/UserOneClickLinkKey';
 import { DbSentEmail } from '@/common/types/SentEmail';
+import { DbUserProfile } from '@/common/types/UserProfile';
+import { setupDb } from './setup-script';
 import {
 	Collection,
 	Db,
 	MongoClient,
 } from 'mongodb';
-import { DbUserProfile } from '@/common/types/UserProfile';
-import { setupDb } from './setup-script';
 
 // In development mode, use a global variable so that the value
 // is preserved across module reloads caused by HMR (Hot Module Replacement).
