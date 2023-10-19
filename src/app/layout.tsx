@@ -67,7 +67,7 @@ async function RootLayout(props: Props) {
 					</li>
 				</ul>
 			</nav>
-			<main className="flex-1 p-5">
+			<main className="flex-1 p-5 overflow-x-auto">
 				{children}
 			</main>
 			<Toaster />
