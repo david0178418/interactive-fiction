@@ -5,6 +5,7 @@ export
 interface DbStory {
 	_id: ObjectId;
 	createdDate: Date;
+	published?: boolean;
 	summary: string;
 	title: string;
 	updatedDate: Date;
