@@ -21,7 +21,7 @@ export function StoryCard(props: Props) {
 		story: {
 			title,
 			summary,
-			ownerUsername,
+			owner: { username },
 		},
 	} = props;
 	return (
@@ -34,7 +34,7 @@ export function StoryCard(props: Props) {
 				<p>asdfasdfasddlfjdslfj</p>
 			</CardContent>
 			<CardFooter>
-				<p>by {ownerUsername}</p>
+				<p>by {username}</p>
 			</CardFooter>
 		</Card>
 	);

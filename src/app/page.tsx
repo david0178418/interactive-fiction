@@ -1,4 +1,4 @@
-import { range } from '@/common/utils';
+import { nowISOString, range } from '@/common/utils';
 import { StoryCard } from '@/components/story-card';
 
 export default
@@ -12,8 +12,12 @@ async function HomePage() {
 						_id: '',
 						title: 'foo',
 						summary: 'asdfas df asdf ads f adsf as sdf',
-						ownerId: '',
-						ownerUsername: 'bar',
+						owner: {
+							id: '',
+							username: 'bar',
+						},
+						createdDateISOString: nowISOString(),
+						updatedDateISOString: nowISOString(),
 					}}
 				/>
 			))}
